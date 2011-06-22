@@ -1,0 +1,11 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=3636
+
+Utility for save files under new names in vim with automatically cleaning up the old file's buffer and hard disk version.
+
+Usage:
+<leader>rep brings up the function call. Just enter the desired new filename and press
+enter. The new file will be saved, the buffer opened, the old file deleted
+if was written to disk and its buffer closed.
+
+default mapping
+<leader>rep
