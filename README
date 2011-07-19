@@ -1,11 +1,27 @@
 This is a mirror of http://www.vim.org/scripts/script.php?script_id=3636
 
-Utility for save files under new names in vim with automatically cleaning up the old file's buffer and hard disk version.
+Life-changing utility for saving files under new names in Vim with automated clean up of the old file's buffer and hard disk version.
 
 Usage:
-<leader>rep brings up the function call. Just enter the desired new filename and press
-enter. The new file will be saved, the buffer opened, the old file deleted
-if was written to disk and its buffer closed.
+Call the function by one of the methods below. Insert the desired new /optional/newpath/filename and press <Enter>.
+The new file will be saved, a buffer for it will be opened, the old file's buffer closed and the old file deleted (if was written to disk).
 
-default mapping
-<leader>rep
+Method 1 (preferred):
+    <leader>R
+brings up the function call with the current file's full path.
+
+Method 2:
+     :Repfile
+will operate from Vim's CWD, not with the buffers directory.
+
+Mapping:
+The default mapping is:
+    <leader>R
+
+If you want to change that, put
+    let g:RepCall="yourmapping"
+in your vimrc.
+
+Added BufKill support to be able to delete/unload/wipeout a buffer without loosing it's window.
+Get BufKill here: vimscript#1147 (not neccessary, but really recommended)
+

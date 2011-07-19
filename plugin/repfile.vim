@@ -11,15 +11,17 @@
 " if was written to disk and its buffer closed.
 
 " default mapping
-map <leader>rep :call RepFile("")<left><left>
+map <leader>rep :RepFile <c-r>=expand('%:p:h')<cr>/
 
 function! RepFile(newfile)
     let oldfile=expand("%")
     let newfile=a:newfile
-    execute 'sav ' . newfile
-    bp
+    silent execute 'w ' . newfile
     bw
     if filereadable(oldfile) == 1
-        execute '!rm ' . oldfile
+        silent execute '!rm ' . oldfile
     endif
+    silent execute 'e ' . newfile
 endfunction
+
+command! -bang -nargs=* -complete=file RepFile call RepFile(<q-args>)
